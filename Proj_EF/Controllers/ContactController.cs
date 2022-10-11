@@ -18,6 +18,7 @@ namespace Proj_EF.Controllers
             Console.WriteLine(">>CADASTRO DE CONTATO<<");
             using (var context = new ContactContext())
             {
+                //usar um try catch
                 Console.WriteLine("Informe o nome: ");
                 p.Name = Console.ReadLine();
                 Console.WriteLine("Informe o telefone celular: ");
@@ -96,7 +97,55 @@ namespace Proj_EF.Controllers
                     Console.ReadKey();
                 }
             }
+        }
+        public void UpdateContact()
+        {
+            Person person = new Person();
+            using (var context = new ContactContext())
+            {
+                Console.WriteLine("Informe o nome para consultar os dados do contato: ");
+                person.Name = Console.ReadLine();
+                var find = context.Telephones.FirstOrDefault(t => t.Name.Name == person.Name);
+                if (find != null)
+                {
+                    Console.WriteLine(find.ToString());
+                    Console.WriteLine("\nPressione ENTER para sair...");
+                    Console.ReadKey();
+                    Console.WriteLine("\nO que deseja atualizar? \n1-Telefone celular\n2-Telefone Fixo\nEscolha: ");
+                    int op = int.Parse(Console.ReadLine());
+                    switch (op) 
+                    { 
+                        case 1:
+                            Console.WriteLine("\nAlterar celular: ");
+                            string c = Console.ReadLine();
+                            find.Mobile = c;
+                            context.Entry(find).State = EntityState.Modified;
+                            context.SaveChanges();
+                            Console.WriteLine("Telefone celular atualizado!");
+                            Console.WriteLine(find.ToString());
+                            break;
 
+                        case 2:
+                            Console.WriteLine("\nAlterar fixo: ");
+                            string f = Console.ReadLine();
+                            find.Landline = f;
+                            context.Entry(find).State = EntityState.Modified;
+                            context.SaveChanges();
+                            Console.WriteLine("Telefone fixo atualizado!");
+                            Console.WriteLine(find.ToString());
+                            break;
+
+                            default:
+                            Console.WriteLine("Informe uma das opções ofertadas!!");
+                            break;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("\nDesculpe, esse contato não foi encontrado!");
+                    Console.ReadKey();
+                }
+            }
         }
     }
 }

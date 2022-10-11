@@ -16,7 +16,7 @@ namespace Proj_EF.Models
         public Person Name { get; set; } //associação
         public override string ToString()
         {
-            return $"\nID: {this.Id} \nTelefone celular: {this.Mobile}\nTelefone Fixo: {this.Landline}";
+            return $"\nID: {this.Id} \nTelefone celular: {this.Mobile} \nTelefone Fixo: {this.Landline}";
         }
     }
 }

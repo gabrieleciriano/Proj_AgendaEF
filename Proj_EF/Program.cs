@@ -13,8 +13,8 @@ namespace Proj_EF
         {
             ContactController c = new ContactController();
             //c.InsertContact();
-            c.SelectAll();
-            //c.SelectOne();
+           // c.SelectAll();
+            c.SelectOne();
             //c.DeleteOne();
         }
     }
