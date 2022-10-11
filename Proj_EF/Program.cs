@@ -14,8 +14,9 @@ namespace Proj_EF
             ContactController c = new ContactController();
             //c.InsertContact();
            // c.SelectAll();
-            c.SelectOne();
+            //c.SelectOne();
             //c.DeleteOne();
+            c.UpdateContact();
         }
     }
 }

@@ -111,28 +111,30 @@ namespace Proj_EF.Controllers
                     Console.WriteLine(find.ToString());
                     Console.WriteLine("\nPressione ENTER para sair...");
                     Console.ReadKey();
-                    Console.WriteLine("\nO que deseja atualizar? \n1-Telefone celular\n2-Telefone Fixo\nEscolha: ");
+                    Console.WriteLine("\nO que deseja atualizar?\n1-Telefone celular\n2-Telefone Fixo\nEscolha: ");
                     int op = int.Parse(Console.ReadLine());
                     switch (op) 
                     { 
                         case 1:
-                            Console.WriteLine("\nAlterar celular: ");
+                            Console.WriteLine("\nAlterar telefone celular: ");
                             string c = Console.ReadLine();
                             find.Mobile = c;
                             context.Entry(find).State = EntityState.Modified;
                             context.SaveChanges();
-                            Console.WriteLine("Telefone celular atualizado!");
+                            Console.WriteLine("\nTelefone celular atualizado!");
                             Console.WriteLine(find.ToString());
+                            Console.ReadKey();
                             break;
 
                         case 2:
-                            Console.WriteLine("\nAlterar fixo: ");
+                            Console.WriteLine("\nAlterar telefone fixo: ");
                             string f = Console.ReadLine();
                             find.Landline = f;
                             context.Entry(find).State = EntityState.Modified;
                             context.SaveChanges();
-                            Console.WriteLine("Telefone fixo atualizado!");
+                            Console.WriteLine("\nTelefone fixo atualizado!");
                             Console.WriteLine(find.ToString());
+                            Console.ReadKey();
                             break;
 
                             default:
