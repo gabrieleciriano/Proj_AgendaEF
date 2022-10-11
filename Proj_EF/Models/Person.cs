@@ -11,6 +11,6 @@ namespace Proj_EF.Models
     {
         [Key]
         public string Name { get; set; }
-        List<Telephone> Telephones { get; set; }
+      
     }
 }

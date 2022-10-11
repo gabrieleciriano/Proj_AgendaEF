@@ -43,10 +43,9 @@ namespace Proj_EF.Controllers
             Console.WriteLine("\nPressione ENTER para sair...");
             Console.ReadKey();
         }
-        //ok
         public void SelectOne()
         {
-           Person person = new Person();
+            Person person = new Person();
             using (var context = new ContactContext())
             {
                 Console.WriteLine("Informe o nome para consultar os telefones: ");
@@ -65,18 +64,19 @@ namespace Proj_EF.Controllers
                 }
             }
         }
-        //ok
         public void DeleteOne()
         {
+            Person person = new Person();
             using (var context = new ContactContext())
             {
-                Console.WriteLine("Informe o ID do contato que deseja deletar o cadastro:");
-                int id = int.Parse(Console.ReadLine());
-                Telephone find = new ContactContext().Telephones.FirstOrDefault(f => f.Id == id);
+
+                Console.WriteLine("Informe o nome para buscar o cadastro: ");
+                person.Name = Console.ReadLine();
+                var find = context.Telephones.FirstOrDefault(t => t.Name.Name == person.Name);
                 if (find != null)
                 {
                     Console.WriteLine(find.ToString());
-                    Console.WriteLine("Deseja realmente deletar esse cadastro? [1 - SIM, 2 - NÃO]");
+                    Console.WriteLine("Deseja realmente deletar esse contato? [1 - SIM, 2 - NÃO]");
                     int op = int.Parse(Console.ReadLine());
                     if (op == 1)
                     {
@@ -113,8 +113,8 @@ namespace Proj_EF.Controllers
                     Console.ReadKey();
                     Console.WriteLine("\nO que deseja atualizar?\n1-Telefone celular\n2-Telefone Fixo\nEscolha: ");
                     int op = int.Parse(Console.ReadLine());
-                    switch (op) 
-                    { 
+                    switch (op)
+                    {
                         case 1:
                             Console.WriteLine("\nAlterar telefone celular: ");
                             string c = Console.ReadLine();
@@ -137,7 +137,7 @@ namespace Proj_EF.Controllers
                             Console.ReadKey();
                             break;
 
-                            default:
+                        default:
                             Console.WriteLine("Informe uma das opções ofertadas!!");
                             break;
                     }
